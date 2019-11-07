@@ -259,6 +259,670 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/numpy(4)%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MaoMao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dear MaoMao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/07/numpy(4)%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97/" itemprop="url">numpy(4)数学计算</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-07T19:39:43+08:00">
+                2019-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="数学计算"><a href="#数学计算" class="headerlink" title="数学计算"></a>数学计算</h1><p>##传统加减乘除操作<br><img src="/images/15731272873247.jpg" alt="-w726"></p>
+<p>注意乘法不是矩阵的乘法，两个矩阵形状必须相同，如果不相同，numpy会使用broadcasting rule</p>
+<h2 id="broadcasting-rule"><a href="#broadcasting-rule" class="headerlink" title="broadcasting rule"></a>broadcasting rule</h2><p>当期望两个矩阵形状相同，而实际不同时，应用的规则</p>
+<ol>
+<li>当rank不同，对较小维的矩阵增加1维直至匹配为止<br><img src="/images/15731275442093.jpg" alt="-w813"></li>
+<li>当其中一个ndarray某一维长度为1，则延该轴重复那个数<br><img src="/images/15731291279085.jpg" alt="-w1009"><br>结合规则1和规则2<br><img src="/images/15731291972118.jpg" alt="-w1032"></li>
+</ol>
+<p><img src="/images/15731292292090.jpg" alt="-w702"></p>
+<ol>
+<li>size必须匹配<br><img src="/images/15731294102995.jpg" alt="-w792"></li>
+</ol>
+<h2 id="upcasting"><a href="#upcasting" class="headerlink" title="upcasting"></a>upcasting</h2><p>当处理两个dtype不同的数组时，numpy会upcast 成一个可以解决所有可能值的类型。<br><img src="/images/15731298254212.jpg" alt="-w1152"></p>
+<h2 id="条件运算"><a href="#条件运算" class="headerlink" title="条件运算"></a>条件运算</h2><p>可以通过条件来筛选数组中符合条件的元素<br><img src="/images/15731299269204.jpg" alt="-w681"></p>
+<h2 id="数学和数据-函数"><a href="#数学和数据-函数" class="headerlink" title="数学和数据 函数"></a>数学和数据 函数</h2><h3 id="ndarray-function"><a href="#ndarray-function" class="headerlink" title="ndarray function"></a>ndarray function</h3><ul>
+<li>a.mean()</li>
+<li>a.min()</li>
+<li>a.max()</li>
+<li>a.sum()</li>
+<li>a.prod()</li>
+<li>a.std()</li>
+<li>a.var()<br>允许在给定的轴进行操作<br><img src="/images/15731303310393.jpg" alt="-w528"><br>多个轴进行运算<br><img src="/images/15731304643495.jpg" alt="-w825"><h3 id="全局函数"><a href="#全局函数" class="headerlink" title="全局函数"></a>全局函数</h3>比如 np.square<br><img src="/images/15731308507384.jpg" alt="-w551"></li>
+<li>np.square</li>
+<li>np.abs</li>
+<li>np.sqrt</li>
+<li>np.exp</li>
+<li>np.log</li>
+<li>np.sign</li>
+<li>np.ceil</li>
+<li>np.modf</li>
+<li>np.isnan</li>
+<li>np.cos<br><img src="/images/15731310745583.jpg" alt="-w1044"><br><img src="/images/15731310927259.jpg" alt="-w815"><h3 id="二元全局函数"><a href="#二元全局函数" class="headerlink" title="二元全局函数"></a>二元全局函数</h3><img src="/images/15731312084864.jpg" alt="-w646"></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MaoMao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dear MaoMao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/07/numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2/" itemprop="url">numpy(3)数组变形</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-07T19:36:56+08:00">
+                2019-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="改变-array-形状"><a href="#改变-array-形状" class="headerlink" title="改变 array 形状"></a>改变 array 形状</h2><p>在改变array形状的时候，arry size必须保持不变</p>
+<p>###直接通过shape属性 改变<br><img src="/images/15731262435788.jpg" alt="-w1154"></p>
+<p>###通过reshape函数改变<br>reshape函数返回一个指向相同data的新的ndarray。这意味着，修改其中一个，另一个也会改变<br><img src="/images/15731264275112.jpg" alt="-w613"></p>
+<h3 id="ravel"><a href="#ravel" class="headerlink" title="ravel"></a>ravel</h3><p>ravel函数返回 相同数据的一位数组<br><img src="/images/15731264984303.jpg" alt="-w794"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/numpy(2)%E6%95%B0%E7%BB%84%E5%AF%B9%E5%BA%94%E5%B1%9E%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MaoMao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dear MaoMao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/07/numpy(2)%E6%95%B0%E7%BB%84%E5%AF%B9%E5%BA%94%E5%B1%9E%E6%80%A7/" itemprop="url">numpy(2)数组对应属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-07T19:35:38+08:00">
+                2019-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数组数据-array-data"><a href="#数组数据-array-data" class="headerlink" title="数组数据 array data"></a>数组数据 array data</h2><h3 id="dtype"><a href="#dtype" class="headerlink" title="dtype"></a>dtype</h3><p>ndarry 中所有元素的类型必须保持一致，通过dtype确认<br><img src="/images/15731256291158.jpg" alt="-w405"><br>当创建ndarray时，可以显示创建元素类型<br><img src="/images/15731257343205.jpg" alt="-w625"></p>
+<p>可用dtype包括int8, int16, int32, int64, uint8|16|32|64, float16|32|64 and complex64|128.</p>
+<h3 id="itemsize"><a href="#itemsize" class="headerlink" title="itemsize"></a>itemsize</h3><p>返回每个item的字节大小<br><img src="/images/15731258263117.jpg" alt="-w482"></p>
+<h3 id="data-buffer"><a href="#data-buffer" class="headerlink" title="data buffer"></a>data buffer</h3><p>数组元素在内存中 通过buffer的形式存储，通过data属性访问对应的内存地址<br><img src="/images/15731260859974.jpg" alt="-w812"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/numpy(1)%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MaoMao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dear MaoMao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/07/numpy(1)%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/" itemprop="url">numpy(1)创建数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-07T14:59:40+08:00">
+                2019-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><p>numpy 是python中重要的科学计算库。针对n纬数组对象，提供线性代数计算，傅立叶变换和随机数函数</p>
+<h2 id="创建-array"><a href="#创建-array" class="headerlink" title="创建 array"></a>创建 array</h2><p>确保能在py2和py3中同时使用<br><code>from __future__ import division, print_function, unicode_literals</code><br>import numpy<br><code>import numpy as np</code></p>
+<h3 id="np-zeros"><a href="#np-zeros" class="headerlink" title="np.zeros"></a>np.zeros</h3><p>创建任意数量的0<br><code>np.zeros(5)</code><br>array([ 0.,  0.,  0.,  0.,  0.])<br>创建2d<br><code>np.zeros((3,4))</code></p>
+<h3 id="专有名词"><a href="#专有名词" class="headerlink" title="专有名词"></a>专有名词</h3><ul>
+<li>数组每个维度叫做axis 轴</li>
+<li>axes的数量叫做rank<br>比如 3*4的数组，叫做rank2，第一个轴长度为3，第二个轴长度为4</li>
+<li>轴长度list被称为shape （3，4）<br>size = shape所有元素的乘积</li>
+</ul>
+<p><img src="/images/15731106917935.jpg" alt="-w661"></p>
+<h3 id="多维数组创建"><a href="#多维数组创建" class="headerlink" title="多维数组创建"></a>多维数组创建</h3><p><img src="/images/15731107894183.jpg" alt="-w417"></p>
+<h3 id="array-type"><a href="#array-type" class="headerlink" title="array type"></a>array type</h3><p>numpy数组有type ndarray<br><img src="/images/15731108420104.jpg" alt="-w421"></p>
+<h3 id="np-ones"><a href="#np-ones" class="headerlink" title="np.ones"></a>np.ones</h3><p>其他创建ndarry的函数<br><img src="/images/15731109509422.jpg" alt="-w403"></p>
+<h3 id="np-full"><a href="#np-full" class="headerlink" title="np.full"></a>np.full</h3><p>使用给定值填充给定shape<br><img src="/images/15731110055085.jpg" alt="-w716"></p>
+<h3 id="np-empty"><a href="#np-empty" class="headerlink" title="np.empty"></a>np.empty</h3><p>未初始化的数组，数组内容根据内存中现有内容而定。<br><img src="/images/15731111277708.jpg" alt="-w676"></p>
+<h3 id="np-array"><a href="#np-array" class="headerlink" title="np.array"></a>np.array</h3><p>使用ptyhon数组构造ndarray<br><img src="/images/15731112690417.jpg" alt="-w512"></p>
+<h3 id="np-arrange"><a href="#np-arrange" class="headerlink" title="np.arrange"></a>np.arrange</h3><p>使用np range 构造ndarray<br><img src="/images/15731113522890.jpg" alt="-w308"><br>添加步长参数,但对float分数，记过不一定可预测<br><img src="/images/15731113879813.jpg" alt="-w614"></p>
+<h3 id="np-linesapce"><a href="#np-linesapce" class="headerlink" title="np.linesapce"></a>np.linesapce</h3><p>当处理floats时，使用linspace。返回两个数字之间的均匀分布。<br><img src="/images/15731127446954.jpg" alt="-w661"></p>
+<h3 id="np-rand-和-np-randn"><a href="#np-rand-和-np-randn" class="headerlink" title="np.rand 和 np.randn"></a>np.rand 和 np.randn</h3><p>使用np random模块随机数初始化ndarray<br>rand 0-1均匀分布<br><img src="/images/15731129710449.jpg" alt="-w710"><br>0-1高斯分布<br><img src="/images/15731130431611.jpg" alt="-w772"></p>
+<p>对比 均匀分布和高斯分布的区别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(np.random.rand(100000), normed=True, bins=100, histtype=&quot;step&quot;, color=&quot;blue&quot;, label=&quot;rand&quot;)</span><br><span class="line">plt.hist(np.random.randn(100000), normed=True, bins=100, histtype=&quot;step&quot;, color=&quot;red&quot;, label=&quot;randn&quot;)</span><br><span class="line">plt.axis([-2.5, 2.5, 0, 1.1])</span><br><span class="line">plt.legend(loc = &quot;upper left&quot;)</span><br><span class="line">plt.title(&quot;Random distributions&quot;)</span><br><span class="line">plt.xlabel(&quot;Value&quot;)</span><br><span class="line">plt.ylabel(&quot;Density&quot;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/15731147473473.jpg" alt="-w509"></p>
+<h3 id="np-fromfunction"><a href="#np-fromfunction" class="headerlink" title="np.fromfunction"></a>np.fromfunction</h3><p>使用函数创建ndarray<br><img src="/images/15731149761931.jpg" alt="-w779"></p>
+<ol>
+<li>首先创建3个ndarrays，每个的shape是（2，10）</li>
+<li>So the terms x, y and z in the expression x * y + z above are in fact ndarrays (we will discuss arithmetic operations on arrays below). The point is that the function my_function is only called once, instead of once per element. This makes initialization very efficient.</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/pandas%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MaoMao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dear MaoMao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/07/pandas%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/" itemprop="url">end-to-end machine learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-07T11:22:17+08:00">
+                2019-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h1><p>pandas是高性能，易于使用的数据分析工具。主要使用的数据结构是DataFram。可以看作是在内存中的2d表格，功能类似于excel。可以对数据表格中的行列进行计算。</p>
+<h2 id="文本参考"><a href="#文本参考" class="headerlink" title="文本参考"></a>文本参考</h2><p><a href="https://nbviewer.jupyter.org/github/ageron/handson-ml/blob/master/tools_pandas.ipynb" target="_blank" rel="noopener">pandas notebook</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -424,7 +1088,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
