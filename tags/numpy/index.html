@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="numpy," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,20 +94,12 @@
 
 
 
-<meta name="description" content="如何改变ndarray形状">
-<meta name="keywords" content="numpy">
-<meta property="og:type" content="article">
-<meta property="og:title" content="end-to-end machine learning">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2&#x2F;index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dear MaoMao">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;numpy&#x2F;index.html">
 <meta property="og:site_name" content="Dear MaoMao">
-<meta property="og:description" content="如何改变ndarray形状">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731262435788.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731264275112.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731264984303.jpg">
-<meta property="og:updated_time" content="2019-11-08T03:35:37.856Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731262435788.jpg">
 
 
 
@@ -136,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/07/numpy(3)数组变形/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/numpy/"/>
 
 
 
 
 
-  <title>end-to-end machine learning | Dear MaoMao</title>
+  <title>Tag: numpy | Dear MaoMao</title>
   
 
 
@@ -167,7 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -251,156 +243,166 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>numpy<small>Tag</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MaoMao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dear MaoMao">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">end-to-end machine learning</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/2019/11/08/numpy-5-%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C/" itemprop="url">
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span itemprop="name">numpy(5)数组下标及切片操作</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-07T11:25:00+08:00">
-                2019-11-07
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-11-08T11:33:25+08:00"
+              content="2019-11-08" >
+          11-08
+        </time>
+      </div>
 
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>如何改变ndarray形状</p>
-<a id="more"></a>
-<h2 id="改变-array-形状"><a href="#改变-array-形状" class="headerlink" title="改变 array 形状"></a>改变 array 形状</h2><p>在改变array形状的时候，arry size必须保持不变</p>
-<p>###直接通过shape属性 改变<br><img src="/images/15731262435788.jpg" alt="-w1154"></p>
-<p>###通过reshape函数改变<br>reshape函数返回一个指向相同data的新的ndarray。这意味着，修改其中一个，另一个也会改变<br><img src="/images/15731264275112.jpg" alt="-w613"></p>
-<h3 id="ravel"><a href="#ravel" class="headerlink" title="ravel"></a>ravel</h3><p>ravel函数返回 相同数据的一位数组<br><img src="/images/15731264984303.jpg" alt="-w794"></p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/numpy/" rel="tag"># numpy</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/11/07/numpy(2)%E6%95%B0%E7%BB%84%E5%AF%B9%E5%BA%94%E5%B1%9E%E6%80%A7/" rel="next" title="end-to-end machine learning">
-                <i class="fa fa-chevron-left"></i> end-to-end machine learning
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/07/numpy(4)%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97/" rel="prev" title="end-to-end machine learning">
-                end-to-end machine learning <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
+      
+        
 
-    <div class="post-spread">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2019/11/07/numpy(4)%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97/" itemprop="url">
+              
+                <span itemprop="name">end-to-end machine learning</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-11-07T11:26:00+08:00"
+              content="2019-11-07" >
+          11-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2019/11/07/numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2/" itemprop="url">
+              
+                <span itemprop="name">end-to-end machine learning</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-11-07T11:25:00+08:00"
+              content="2019-11-07" >
+          11-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2019/11/07/numpy(2)%E6%95%B0%E7%BB%84%E5%AF%B9%E5%BA%94%E5%B1%9E%E6%80%A7/" itemprop="url">
+              
+                <span itemprop="name">end-to-end machine learning</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-11-07T11:24:00+08:00"
+              content="2019-11-07" >
+          11-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2019/11/07/numpy(1)%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84/" itemprop="url">
+              
+                <span itemprop="name">end-to-end machine learning</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-11-07T11:23:00+08:00"
+              content="2019-11-07" >
+          11-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
       
     </div>
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -408,10 +410,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -432,17 +430,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -495,22 +484,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#改变-array-形状"><span class="nav-number">1.</span> <span class="nav-text">改变 array 形状</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ravel"><span class="nav-number">1.1.</span> <span class="nav-text">ravel</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -624,10 +597,10 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-
+  
 
   
 

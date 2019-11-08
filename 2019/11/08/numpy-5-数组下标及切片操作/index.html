@@ -94,20 +94,20 @@
 
 
 
-<meta name="description" content="如何改变ndarray形状">
+<meta name="description" content="讲述对ndarry取数组元素 及 数组切片操作">
 <meta name="keywords" content="numpy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="end-to-end machine learning">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2&#x2F;index.html">
+<meta property="og:title" content="numpy(5)数组下标及切片操作">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;08&#x2F;numpy-5-%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C&#x2F;index.html">
 <meta property="og:site_name" content="Dear MaoMao">
-<meta property="og:description" content="如何改变ndarray形状">
+<meta property="og:description" content="讲述对ndarry取数组元素 及 数组切片操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731262435788.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731264275112.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731264984303.jpg">
-<meta property="og:updated_time" content="2019-11-08T03:35:37.856Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731843007041.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731843892692.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731845090476.jpg">
+<meta property="og:updated_time" content="2019-11-08T03:45:09.442Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731262435788.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731843007041.jpg">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/07/numpy(3)数组变形/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/08/numpy-5-数组下标及切片操作/"/>
 
 
 
 
 
-  <title>end-to-end machine learning | Dear MaoMao</title>
+  <title>numpy(5)数组下标及切片操作 | Dear MaoMao</title>
   
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/numpy-5-%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MaoMao">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">end-to-end machine learning</h1>
+          <h1 class="post-title" itemprop="name headline">numpy(5)数组下标及切片操作</h1>
         
 
         <div class="post-meta">
@@ -294,8 +294,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-07T11:25:00+08:00">
-                2019-11-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-08T11:33:25+08:00">
+                2019-11-08
               </time>
             
 
@@ -332,12 +332,11 @@
       
 
       
-        <p>如何改变ndarray形状</p>
+        <p>讲述对ndarry取数组元素 及 数组切片操作</p>
 <a id="more"></a>
-<h2 id="改变-array-形状"><a href="#改变-array-形状" class="headerlink" title="改变 array 形状"></a>改变 array 形状</h2><p>在改变array形状的时候，arry size必须保持不变</p>
-<p>###直接通过shape属性 改变<br><img src="/images/15731262435788.jpg" alt="-w1154"></p>
-<p>###通过reshape函数改变<br>reshape函数返回一个指向相同data的新的ndarray。这意味着，修改其中一个，另一个也会改变<br><img src="/images/15731264275112.jpg" alt="-w613"></p>
-<h3 id="ravel"><a href="#ravel" class="headerlink" title="ravel"></a>ravel</h3><p>ravel函数返回 相同数据的一位数组<br><img src="/images/15731264984303.jpg" alt="-w794"></p>
+<h1 id="数组下标及切片"><a href="#数组下标及切片" class="headerlink" title="数组下标及切片"></a>数组下标及切片</h1><h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><p>一维数组切片跟传统ptyhon数组切片类似<br>区间前闭后开，第三个参数表示步长，步长为负的时候，表示逆序<br><img src="/images/15731843007041.jpg" alt="-w737"><br>同样也可以通过下标对 数组中的元素进行修改<br><img src="/images/15731843892692.jpg" alt="-w493"></p>
+<h3 id="与传统python数组不同的地方"><a href="#与传统python数组不同的地方" class="headerlink" title="与传统python数组不同的地方"></a>与传统python数组不同的地方</h3><p>对一个切片赋单值，会根据broadcasting rule延伸<br><img src="/images/15731845090476.jpg" alt="-w547"><br>可以修改，但是不能增加或者减少或者删除切片。<br>ndarray 数组切片是对 原数据的一个视图，所以当你修改数组切片时，实际的数据也会被相应的修改。</p>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><p>多维数组通过提供每个轴的下标，来访问数组中的对应元素</p>
 
       
     </div>
@@ -368,7 +367,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/07/numpy(2)%E6%95%B0%E7%BB%84%E5%AF%B9%E5%BA%94%E5%B1%9E%E6%80%A7/" rel="next" title="end-to-end machine learning">
+              <a href="/2019/11/07/numpy(4)%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97/" rel="next" title="end-to-end machine learning">
                 <i class="fa fa-chevron-left"></i> end-to-end machine learning
               </a>
             
@@ -377,10 +376,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/07/numpy(4)%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97/" rel="prev" title="end-to-end machine learning">
-                end-to-end machine learning <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,7 +500,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#改变-array-形状"><span class="nav-number">1.</span> <span class="nav-text">改变 array 形状</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ravel"><span class="nav-number">1.1.</span> <span class="nav-text">ravel</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数组下标及切片"><span class="nav-number">1.</span> <span class="nav-text">数组下标及切片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一维数组"><span class="nav-number">1.1.</span> <span class="nav-text">一维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与传统python数组不同的地方"><span class="nav-number">1.1.1.</span> <span class="nav-text">与传统python数组不同的地方</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">1.2.</span> <span class="nav-text">多维数组</span></a></li></ol></li></ol></div>
             
 
           </div>
