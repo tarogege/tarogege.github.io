@@ -51,16 +51,46 @@
   };
 </script>
 
-  <meta name="description" content="pandaspandas是高性能，易于使用的数据分析工具。主要使用的数据结构是DataFram。可以看作是在内存中的2d表格，功能类似于excel。可以对数据表格中的行列进行计算。 文本参考pandas notebook">
+  <meta name="description" content="pandaspandas是高性能，易于使用的数据分析工具。主要使用的数据结构是DataFram。可以看作是在内存中的2d表格，功能类似于excel。可以对数据表格中的行列进行计算。">
 <meta name="keywords" content="pandas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="end-to-end machine learning">
+<meta property="og:title" content="pandas初步了解（Series）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;pandas%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="Dear MaoMao">
-<meta property="og:description" content="pandaspandas是高性能，易于使用的数据分析工具。主要使用的数据结构是DataFram。可以看作是在内存中的2d表格，功能类似于excel。可以对数据表格中的行列进行计算。 文本参考pandas notebook">
+<meta property="og:description" content="pandaspandas是高性能，易于使用的数据分析工具。主要使用的数据结构是DataFram。可以看作是在内存中的2d表格，功能类似于excel。可以对数据表格中的行列进行计算。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-08T03:35:37.849Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735588069420.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735589094337.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735589721195.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735591138666.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735591574333.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735591865363.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735593302617.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735593827796.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735595949576.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735597008022.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735597422651.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735598680225.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735599840306.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735603891244.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735604589912.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735605193970.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735610464923.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735611385607.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735611789517.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735613556649.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735616053886.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735618561417.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735619252562.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735620960973.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735622231132.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735624471844.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735625086767.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735627611281.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735628881483.jpg">
+<meta property="og:updated_time" content="2019-11-12T12:48:17.936Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735588069420.jpg">
 
 <link rel="canonical" href="http://yoursite.com/2019/11/07/pandas%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/">
 
@@ -76,7 +106,7 @@
   };
 </script>
 
-  <title>end-to-end machine learning | Dear MaoMao</title>
+  <title>pandas初步了解（Series） | Dear MaoMao</title>
   
 
 
@@ -189,7 +219,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          end-to-end machine learning
+          pandas初步了解（Series）
         </h1>
 
         <div class="post-meta">
@@ -206,7 +236,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-08 11:35:37" itemprop="dateModified" datetime="2019-11-08T11:35:37+08:00">2019-11-08</time>
+                <time title="修改时间：2019-11-12 20:48:17" itemprop="dateModified" datetime="2019-11-12T20:48:17+08:00">2019-11-12</time>
               </span>
 
           
@@ -221,7 +251,35 @@
 
       
         <h1 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h1><p>pandas是高性能，易于使用的数据分析工具。主要使用的数据结构是DataFram。可以看作是在内存中的2d表格，功能类似于excel。可以对数据表格中的行列进行计算。</p>
+<a id="more"></a>
+<h1 id="pandas-1"><a href="#pandas-1" class="headerlink" title="pandas"></a>pandas</h1><p>pandas包含多种有用的数据结构</p>
+<ul>
+<li>series 1维数组</li>
+<li>data fram 2d数组</li>
+<li>panel dataframe合集</li>
+</ul>
 <h2 id="文本参考"><a href="#文本参考" class="headerlink" title="文本参考"></a>文本参考</h2><p><a href="https://nbviewer.jupyter.org/github/ageron/handson-ml/blob/master/tools_pandas.ipynb" target="_blank" rel="noopener">pandas notebook</a></p>
+<h1 id="series-对象"><a href="#series-对象" class="headerlink" title="series 对象"></a>series 对象</h1><h2 id="创建一个series"><a href="#创建一个series" class="headerlink" title="创建一个series"></a>创建一个series</h2><p>pd.Series([…])<br><img src="/images/15735588069420.jpg" alt="-w604"></p>
+<h3 id="同1维-ndarray类似"><a href="#同1维-ndarray类似" class="headerlink" title="同1维 ndarray类似"></a>同1维 ndarray类似</h3><p>因为pd.series 创建了与1维ndarray类似的数组，所以可以将其作为参数传递给numpy的函数<br><img src="/images/15735589094337.jpg" alt="-w370"></p>
+<p>同ndarray一样，数组加减乘除运算依然作用于元素级别<br><img src="/images/15735589721195.jpg" alt="-w1107"></p>
+<h3 id="下标"><a href="#下标" class="headerlink" title="下标"></a>下标</h3><p>series数组中每个元素有唯一的下标，默认从0开始排序，但是可以手动更改<br><img src="/images/15735591138666.jpg" alt="-w808"><br>此时 可以像字典一样访问<br><img src="/images/15735591574333.jpg" alt="-w262"><br>也可以通过顺序值进行访问<br><img src="/images/15735591865363.jpg" alt="-w200"><br>为了方便区分两种方式，当使用label访问时，使用loc属性；使用位置访问时，使用iloc属性<br><img src="/images/15735593302617.jpg" alt="-w302"><br>数组切片<br><img src="/images/15735593827796.jpg" alt="-w618"><br>注意：下标不会随着切片而更新，但如果通过iloc进行访问，则可以通过更新后的元素位置来访问。<br><img src="/images/15735595949576.jpg" alt="-w1175"></p>
+<h3 id="通过字典初始化series"><a href="#通过字典初始化series" class="headerlink" title="通过字典初始化series"></a>通过字典初始化series</h3><p><img src="/images/15735597008022.jpg" alt="-w678"><br>可以通过字典键来控制是否加入series中<br><img src="/images/15735597422651.jpg" alt="-w623"></p>
+<h3 id="自动对齐"><a href="#自动对齐" class="headerlink" title="自动对齐"></a>自动对齐</h3><p>当有多个series向量，根据下标自动对齐<br><img src="/images/15735598680225.jpg" alt="-w721"><br>如果你忘记设定下标，可能导致错误<br><img src="/images/15735599840306.jpg" alt="-w490"></p>
+<h3 id="通过标量初始化"><a href="#通过标量初始化" class="headerlink" title="通过标量初始化"></a>通过标量初始化</h3><p>可以通过标量和下标对series进行初始化<br><img src="/images/15735603891244.jpg" alt="-w611"></p>
+<h3 id="series-name"><a href="#series-name" class="headerlink" title="series name"></a>series name</h3><p>series数组可以有名字<br><img src="/images/15735604589912.jpg" alt="-w703"></p>
+<h3 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h3><p><img src="/images/15735605193970.jpg" alt="-w796"></p>
+<h2 id="时间处理"><a href="#时间处理" class="headerlink" title="时间处理"></a>时间处理</h2><p>pandas能够非常方便的处理数据集中包含的时间戳数据</p>
+<ul>
+<li>能够处理时间区间和频率</li>
+<li>能够将时间区间转化为真正的时间</li>
+<li>能够重新采样，并将数据汇总成你想要的方式</li>
+<li>能够处理时区</li>
+</ul>
+<h3 id="time-range"><a href="#time-range" class="headerlink" title="time range"></a>time range</h3><p>通过pd.data_range()创建time serires。函数会返回一个datetimeIndex<br><img src="/images/15735610464923.jpg" alt="-w727"><br>datetimeIndex可以作为series下标使用<br><img src="/images/15735611385607.jpg" alt="-w482"><br>对他进行画图<br><img src="/images/15735611789517.jpg" alt="-w520"></p>
+<h2 id="重新采样-resampling"><a href="#重新采样-resampling" class="headerlink" title="重新采样 resampling"></a>重新采样 resampling</h2><p>调用resample(),具体化一个新的频率<br><img src="/images/15735613556649.jpg" alt="-w969"><br>因为resample是一个延迟的异步操作，所以返回的是一个datetimeIndexResample对象，而不是一个series对象。可以简单的通过mean（）方法，求连续时间的均值，将其转化为series对象<br><img src="/images/15735616053886.jpg" alt="-w554"><br>注意一下，这里自动将两个小时之间的值求平均取得重新采样的结果，实际上，也可以采用其他方式来对原数据进行处理，比如最小值<br><img src="/images/15735618561417.jpg" alt="-w644"><br>可选择的，可以使用apply方法，来代替上述操作<br><img src="/images/15735619252562.jpg" alt="-w655"></p>
+<h3 id="向上采样和插值（Upsampling-and-interpolation）"><a href="#向上采样和插值（Upsampling-and-interpolation）" class="headerlink" title="向上采样和插值（Upsampling and interpolation）"></a>向上采样和插值（Upsampling and interpolation）</h3><p>一个向下采样的例子，展示前10条。arr.head(n=10)<br><img src="/images/15735620960973.jpg" alt="-w755"><br>通过插值来填补NaN。调用interpolate()函数，默认是使用线性插值，但也可以使用其他插值方式，比如立方插值。<br><img src="/images/15735622231132.jpg" alt="-w884"></p>
+<h3 id="时区（time-zones）"><a href="#时区（time-zones）" class="headerlink" title="时区（time zones）"></a>时区（time zones）</h3><p>通过调用tz_localize()，来使时间知道所在的时区。<br><img src="/images/15735624471844.jpg" alt="-w662"><br>后面添加了-4:00，表示相对于UTC时间少4小时<br>将时区设置到巴黎<br><img src="/images/15735625086767.jpg" alt="-w662"><br>注意此时，2:30出现两次，因为巴黎特殊的将冬天晚上调快一个小时 所以相对于UTC有+1:00也有加+2:00<br>当对这样的时间再次调用本地话函数时，会报错。可以使用ambiguous参数，来避免这样的错误<br><img src="/images/15735627611281.jpg" alt="-w777"></p>
+<h3 id="时间区间（periods）"><a href="#时间区间（periods）" class="headerlink" title="时间区间（periods）"></a>时间区间（periods）</h3><p>pd.period_range(),返回一个PeriodIndex，而不是DatetimeIndex<br><img src="/images/15735628881483.jpg" alt="-w720"></p>
 
     </div>
 
@@ -284,7 +342,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pandas"><span class="nav-number">1.</span> <span class="nav-text">pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本参考"><span class="nav-number">1.1.</span> <span class="nav-text">文本参考</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pandas"><span class="nav-number">1.</span> <span class="nav-text">pandas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pandas-1"><span class="nav-number">2.</span> <span class="nav-text">pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本参考"><span class="nav-number">2.1.</span> <span class="nav-text">文本参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#series-对象"><span class="nav-number">3.</span> <span class="nav-text">series 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个series"><span class="nav-number">3.1.</span> <span class="nav-text">创建一个series</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同1维-ndarray类似"><span class="nav-number">3.1.1.</span> <span class="nav-text">同1维 ndarray类似</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下标"><span class="nav-number">3.1.2.</span> <span class="nav-text">下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过字典初始化series"><span class="nav-number">3.1.3.</span> <span class="nav-text">通过字典初始化series</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动对齐"><span class="nav-number">3.1.4.</span> <span class="nav-text">自动对齐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过标量初始化"><span class="nav-number">3.1.5.</span> <span class="nav-text">通过标量初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#series-name"><span class="nav-number">3.1.6.</span> <span class="nav-text">series name</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#画图"><span class="nav-number">3.1.7.</span> <span class="nav-text">画图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间处理"><span class="nav-number">3.2.</span> <span class="nav-text">时间处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#time-range"><span class="nav-number">3.2.1.</span> <span class="nav-text">time range</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重新采样-resampling"><span class="nav-number">3.3.</span> <span class="nav-text">重新采样 resampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向上采样和插值（Upsampling-and-interpolation）"><span class="nav-number">3.3.1.</span> <span class="nav-text">向上采样和插值（Upsampling and interpolation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时区（time-zones）"><span class="nav-number">3.3.2.</span> <span class="nav-text">时区（time zones）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间区间（periods）"><span class="nav-number">3.3.3.</span> <span class="nav-text">时间区间（periods）</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
