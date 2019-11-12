@@ -51,22 +51,33 @@
   };
 </script>
 
-  <meta name="description" content="如何改变ndarray形状">
+  <meta name="description" content="介绍了在ndarray上的数组的各种操作。其中包括循环；拼接；拆分；转置">
 <meta name="keywords" content="numpy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="numpy(3)数组变形">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2&#x2F;index.html">
+<meta property="og:title" content="numpy(6)数组操作">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;08&#x2F;numpy-6-%E6%95%B0%E7%BB%84%E5%BE%AA%E7%8E%AF&#x2F;index.html">
 <meta property="og:site_name" content="Dear MaoMao">
-<meta property="og:description" content="如何改变ndarray形状">
+<meta property="og:description" content="介绍了在ndarray上的数组的各种操作。其中包括循环；拼接；拆分；转置">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731262435788.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731264275112.jpg">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731264984303.jpg">
-<meta property="og:updated_time" content="2019-11-12T02:48:14.990Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732061503215.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732061638034.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732062178559.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732064005342.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732065079614.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732065605594.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732067114855.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732068466330.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732104783549.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732105268223.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732109319950.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732109826663.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732110117214.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735428153183.jpg">
+<meta property="og:updated_time" content="2019-11-12T07:13:50.657Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15731262435788.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15732061503215.jpg">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/07/numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2/">
+<link rel="canonical" href="http://yoursite.com/2019/11/08/numpy-6-%E6%95%B0%E7%BB%84%E5%BE%AA%E7%8E%AF/">
 
 
 <script id="page-configurations">
@@ -80,7 +91,7 @@
   };
 </script>
 
-  <title>numpy(3)数组变形 | Dear MaoMao</title>
+  <title>numpy(6)数组操作 | Dear MaoMao</title>
   
 
 
@@ -180,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/numpy(3)%E6%95%B0%E7%BB%84%E5%8F%98%E5%BD%A2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/numpy-6-%E6%95%B0%E7%BB%84%E5%BE%AA%E7%8E%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -193,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          numpy(3)数组变形
+          numpy(6)数组操作
         </h1>
 
         <div class="post-meta">
@@ -203,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-11-07 11:25:00" itemprop="dateCreated datePublished" datetime="2019-11-07T11:25:00+08:00">2019-11-07</time>
+              <time title="创建时间：2019-11-08 17:37:56" itemprop="dateCreated datePublished" datetime="2019-11-08T17:37:56+08:00">2019-11-08</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-12 10:48:14" itemprop="dateModified" datetime="2019-11-12T10:48:14+08:00">2019-11-12</time>
+                <time title="修改时间：2019-11-12 15:13:50" itemprop="dateModified" datetime="2019-11-12T15:13:50+08:00">2019-11-12</time>
               </span>
 
           
@@ -224,12 +235,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>如何改变ndarray形状</p>
+        <p>介绍了在ndarray上的数组的各种操作。其中包括循环；拼接；拆分；转置</p>
 <a id="more"></a>
-<h2 id="改变-array-形状"><a href="#改变-array-形状" class="headerlink" title="改变 array 形状"></a>改变 array 形状</h2><p>在改变array形状的时候，arry size必须保持不变</p>
-<p>###直接通过shape属性 改变<br><img src="/images/15731262435788.jpg" alt="-w1154"></p>
-<p>###通过reshape函数改变<br>reshape函数返回一个指向相同data的新的ndarray。这意味着，修改其中一个，另一个也会改变<br><img src="/images/15731264275112.jpg" alt="-w613"></p>
-<h3 id="ravel"><a href="#ravel" class="headerlink" title="ravel"></a>ravel</h3><p>ravel函数返回 相同数据的一维数组<br><img src="/images/15731264984303.jpg" alt="-w794"></p>
+<h1 id="数组循环-for…in…"><a href="#数组循环-for…in…" class="headerlink" title="数组循环 for…in…"></a>数组循环 for…in…</h1><p>ndarray的数组循环和传统的python数组类似，注意多维ndarray的循环只在第一维上进行。<br>使用for…in…循环<br><img src="/images/15732061503215.jpg" alt="-w809"><br><img src="/images/15732061638034.jpg" alt="-w659"><br>如果想要遍历 多维数组中的所有元素，则调用flat属性<br><img src="/images/15732062178559.jpg" alt="-w344"></p>
+<h1 id="数组拼接"><a href="#数组拼接" class="headerlink" title="数组拼接"></a>数组拼接</h1><p>首先，创建三个ndarray，q1，q2,q3<br><img src="/images/15732064005342.jpg" alt="-w410"></p>
+<h2 id="vstack"><a href="#vstack" class="headerlink" title="vstack"></a>vstack</h2><p>增加行数，按列对齐，列数必须相同，返回新ndarray<br><img src="/images/15732065079614.jpg" alt="-w534"></p>
+<h2 id="hstack"><a href="#hstack" class="headerlink" title="hstack"></a>hstack</h2><p>增加列数，按行对齐，行数必须相同<br><img src="/images/15732065605594.jpg" alt="-w564"></p>
+<h2 id="concatenate"><a href="#concatenate" class="headerlink" title="concatenate"></a>concatenate</h2><p>沿着已经存在的给定轴进行拼接，增加给定轴的长度<br><img src="/images/15732067114855.jpg" alt="-w676"></p>
+<h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><p>沿着新的轴进行拼接，要求所有 ndaray的形状相同<br><img src="/images/15732068466330.jpg" alt="-w470"></p>
+<h1 id="数组拆分"><a href="#数组拆分" class="headerlink" title="数组拆分"></a>数组拆分</h1><p>拆分是拼接的反操作</p>
+<h2 id="vsplit"><a href="#vsplit" class="headerlink" title="vsplit"></a>vsplit</h2><p><img src="/images/15732104783549.jpg" alt="-w415"></p>
+<h2 id="hsplit"><a href="#hsplit" class="headerlink" title="hsplit"></a>hsplit</h2><p><img src="/images/15732105268223.jpg" alt="-w324"></p>
+<h1 id="数组转置"><a href="#数组转置" class="headerlink" title="数组转置"></a>数组转置</h1><p>转置提供了ndarray data的新视图，将轴按照给定顺序旋转<br><img src="/images/15732109319950.jpg" alt="-w513"><br>3维数组的轴 分别是0，1，2，将其重新排序为1，2，0<br><img src="/images/15732109826663.jpg" alt="-w421"><br>transpose有默认值<br><img src="/images/15732110117214.jpg" alt="-w608"></p>
+<h1 id="swapaxes"><a href="#swapaxes" class="headerlink" title="swapaxes"></a>swapaxes</h1><p>transpose函数的简单版，提供交换两个轴的方法<br><img src="/images/15735428153183.jpg" alt="-w691"></p>
 
     </div>
 
@@ -246,16 +264,16 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/07/numpy(2)%E6%95%B0%E7%BB%84%E5%AF%B9%E5%BA%94%E5%B1%9E%E6%80%A7/" rel="next" title="numpy(2)数组对应属性">
-                  <i class="fa fa-chevron-left"></i> numpy(2)数组对应属性
+                <a href="/2019/11/08/numpy-5-%E6%95%B0%E7%BB%84%E4%B8%8B%E6%A0%87%E5%8F%8A%E5%88%87%E7%89%87%E6%93%8D%E4%BD%9C/" rel="next" title="numpy(5)数组下标及切片操作">
+                  <i class="fa fa-chevron-left"></i> numpy(5)数组下标及切片操作
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/07/numpy(4)%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97/" rel="prev" title="numpy(4)数学计算">
-                  numpy(4)数学计算 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/11/12/numpy-7-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="prev" title="numpy(7)线性代数">
+                  numpy(7)线性代数 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -295,7 +313,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#改变-array-形状"><span class="nav-number">1.</span> <span class="nav-text">改变 array 形状</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ravel"><span class="nav-number">1.1.</span> <span class="nav-text">ravel</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数组循环-for…in…"><span class="nav-number">1.</span> <span class="nav-text">数组循环 for…in…</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组拼接"><span class="nav-number">2.</span> <span class="nav-text">数组拼接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vstack"><span class="nav-number">2.1.</span> <span class="nav-text">vstack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hstack"><span class="nav-number">2.2.</span> <span class="nav-text">hstack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concatenate"><span class="nav-number">2.3.</span> <span class="nav-text">concatenate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stack"><span class="nav-number">2.4.</span> <span class="nav-text">stack</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组拆分"><span class="nav-number">3.</span> <span class="nav-text">数组拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vsplit"><span class="nav-number">3.1.</span> <span class="nav-text">vsplit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hsplit"><span class="nav-number">3.2.</span> <span class="nav-text">hsplit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组转置"><span class="nav-number">4.</span> <span class="nav-text">数组转置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#swapaxes"><span class="nav-number">5.</span> <span class="nav-text">swapaxes</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

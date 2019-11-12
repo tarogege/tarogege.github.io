@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Dear MaoMao" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="ndarray 二维数组可以用来表示数组上的矩阵。介绍一下，跟矩阵运算有关的api细节。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numpy(7)线性代数">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;12&#x2F;numpy-7-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0&#x2F;index.html">
+<meta property="og:site_name" content="Dear MaoMao">
+<meta property="og:description" content="ndarray 二维数组可以用来表示数组上的矩阵。介绍一下，跟矩阵运算有关的api细节。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735430525348.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735430887974.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735431843813.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735434161806.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735438064996.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735438282032.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735438744575.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735438951608.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735441057204.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735442073411.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735443424199.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735453270637.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735456775964.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735458398956.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735460582284.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735461240047.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735461599876.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735464535304.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735469667815.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735471339915.jpg">
+<meta property="og:updated_time" content="2019-11-12T08:26:40.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735430525348.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2019/11/12/numpy-7-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>numpy(7)线性代数 | Dear MaoMao</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dear MaoMao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">fight to graduate</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/numpy-7-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="MaoMao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dear MaoMao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          numpy(7)线性代数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-12 15:14:07 / 修改时间：16:26:40" itemprop="dateCreated datePublished" datetime="2019-11-12T15:14:07+08:00">2019-11-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>ndarray 二维数组可以用来表示数组上的矩阵。介绍一下，跟矩阵运算有关的api细节。</p>
+<a id="more"></a>
+<h1 id="线性代数"><a href="#线性代数" class="headerlink" title="线性代数"></a>线性代数</h1><h2 id="矩阵转置"><a href="#矩阵转置" class="headerlink" title="矩阵转置"></a>矩阵转置</h2><p>当维度大于2时，属性T 等于调用 transpose()。<br><img src="/images/15735430525348.jpg" alt="-w395"><br>属性T对0维和1维的向量，没有作用<br><img src="/images/15735430887974.jpg" alt="-w342"><br>可以通过将向量resahpe成（1，5）的矩阵，然后再对其进行转置<br><img src="/images/15735431843813.jpg" alt="-w261"></p>
+<h2 id="矩阵点乘-arr-dot"><a href="#矩阵点乘-arr-dot" class="headerlink" title="矩阵点乘 arr.dot"></a>矩阵点乘 arr.dot</h2><p>使用dot方法实现数组点乘</p>
+<p><img src="/images/15735434161806.jpg" alt="-w509"><br>注意：n1*n2 不是矩阵的点乘，而是对应元素的相乘</p>
+<h2 id="linalg"><a href="#linalg" class="headerlink" title="linalg"></a>linalg</h2><p>许多线性代数方法都在linalg模块里</p>
+<h3 id="矩阵的逆和伪逆"><a href="#矩阵的逆和伪逆" class="headerlink" title="矩阵的逆和伪逆"></a>矩阵的逆和伪逆</h3><p>比如inv求矩阵的逆<br><img src="/images/15735438064996.jpg" alt="-w569"><br>同时也可以通过 pinv求矩阵的伪逆<img src="/images/15735438282032.jpg" alt="-w543"></p>
+<h3 id="单位矩阵"><a href="#单位矩阵" class="headerlink" title="单位矩阵"></a>单位矩阵</h3><p>矩阵dot矩阵的逆，可以得到单位矩阵（带有浮点数错误）<br><img src="/images/15735438744575.jpg" alt="-w675"><br>通过np.eye 创建N*N单位方阵<br><img src="/images/15735438951608.jpg" alt="-w330"></p>
+<h3 id="QR分解"><a href="#QR分解" class="headerlink" title="QR分解"></a>QR分解</h3><p>矩阵的QR分解是指将矩阵A 分解成 QR。A = QR。其中Q是一个正交矩阵，R是一个上三角矩阵<br><img src="/images/15735441057204.jpg" alt="-w585"></p>
+<h3 id="行列式-Determinant"><a href="#行列式-Determinant" class="headerlink" title="行列式 (Determinant)"></a>行列式 (Determinant)</h3><p>通过det函数计算矩阵行列式<br><img src="/images/15735442073411.jpg" alt="-w533"></p>
+<h3 id="特征值和特征向量-Eigenvalues-and-eigenvectors"><a href="#特征值和特征向量-Eigenvalues-and-eigenvectors" class="headerlink" title="特征值和特征向量 (Eigenvalues and eigenvectors)"></a>特征值和特征向量 (Eigenvalues and eigenvectors)</h3><p>通过eig函数计算矩阵特征向量<br><img src="/images/15735443424199.jpg" alt="-w699"></p>
+<h3 id="奇异值分解SVD-（Singular-Value-Decomposition）"><a href="#奇异值分解SVD-（Singular-Value-Decomposition）" class="headerlink" title="奇异值分解SVD （Singular Value Decomposition）"></a>奇异值分解SVD （Singular Value Decomposition）</h3><p>svd函数接受一个矩阵作为参数，并返回该矩阵的奇异值<br>奇异值分解 A = U S V 。U是m * m，V是n * n，S是m * n。UV都是酉矩阵。酉矩阵的意思是 矩阵的转置等于矩阵的逆（ unitary matrix）。S是元素非负的对角矩阵。<br><img src="/images/15735453270637.jpg" alt="-w710"><br>svd函数只返回 s中的对角值，但是想要完整的s矩阵m*n,可以通过下面方法进行创建<br><img src="/images/15735456775964.jpg" alt="-w836"></p>
+<h3 id="对角线和追踪"><a href="#对角线和追踪" class="headerlink" title="对角线和追踪"></a>对角线和追踪</h3><p>其中trace等于对对角线上所有元素求和<br><img src="/images/15735458398956.jpg" alt="-w772"></p>
+<h3 id="解线性标量方程组"><a href="#解线性标量方程组" class="headerlink" title="解线性标量方程组"></a>解线性标量方程组</h3><p>调用solve函数<br><img src="/images/15735460582284.jpg" alt="-w479"><br>检查计算结果是否正确<br><img src="/images/15735461240047.jpg" alt="-w601"><br>另一种检查结果是否正确的方法是调用 np.allclose 函数<br><img src="/images/15735461599876.jpg" alt="-w488"></p>
+<h3 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h3><p>不用对矩阵中的每个元素依次进行操作，可以更快速的处理 矩阵元素<br>比如，想要对（768，1024）的矩阵，根据sin（xy/40.5）来对其赋初值。一个不好的选择是使用两层循环来对数组中的每个元素进行操作<br><img src="/images/15735464535304.jpg" alt="-w772"><br>使用纯ptyhon的方法是低效的<br>通过numpy来对矩阵进行向量化操作<br>1 使用 meshgrid 方法，通过坐标向量生成坐标矩阵<br><img src="/images/15735469667815.jpg" alt="-w705"><br>不难看出，X Y都是（768，1024）的矩阵，X元素跟列下标保持一致，Y元素跟行下标保持一致<br>因此可以通过简单的数组元素来实现上述赋值<br><img src="/images/15735471339915.jpg" alt="-w368"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/08/numpy-6-%E6%95%B0%E7%BB%84%E5%BE%AA%E7%8E%AF/" rel="next" title="numpy(6)数组操作">
+                  <i class="fa fa-chevron-left"></i> numpy(6)数组操作
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/11/12/numpy-8-%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD/" rel="prev" title="numpy(8)保存和加载">
+                  numpy(8)保存和加载 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性代数"><span class="nav-number">1.</span> <span class="nav-text">线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵转置"><span class="nav-number">1.1.</span> <span class="nav-text">矩阵转置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵点乘-arr-dot"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵点乘 arr.dot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linalg"><span class="nav-number">1.3.</span> <span class="nav-text">linalg</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵的逆和伪逆"><span class="nav-number">1.3.1.</span> <span class="nav-text">矩阵的逆和伪逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单位矩阵"><span class="nav-number">1.3.2.</span> <span class="nav-text">单位矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QR分解"><span class="nav-number">1.3.3.</span> <span class="nav-text">QR分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行列式-Determinant"><span class="nav-number">1.3.4.</span> <span class="nav-text">行列式 (Determinant)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征值和特征向量-Eigenvalues-and-eigenvectors"><span class="nav-number">1.3.5.</span> <span class="nav-text">特征值和特征向量 (Eigenvalues and eigenvectors)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#奇异值分解SVD-（Singular-Value-Decomposition）"><span class="nav-number">1.3.6.</span> <span class="nav-text">奇异值分解SVD （Singular Value Decomposition）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对角线和追踪"><span class="nav-number">1.3.7.</span> <span class="nav-text">对角线和追踪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解线性标量方程组"><span class="nav-number">1.3.8.</span> <span class="nav-text">解线性标量方程组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量化"><span class="nav-number">1.3.9.</span> <span class="nav-text">向量化</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="MaoMao"
+    src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">MaoMao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MaoMao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
