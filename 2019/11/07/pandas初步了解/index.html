@@ -88,7 +88,15 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735625086767.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735627611281.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735628881483.jpg">
-<meta property="og:updated_time" content="2019-11-12T12:48:17.936Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15737302603384.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15737304197965.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15737305387611.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15737305940651.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15737306451436.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15737307942072.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15737312471894.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15737313436912.jpg">
+<meta property="og:updated_time" content="2019-11-14T11:35:47.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15735588069420.jpg">
 
@@ -236,7 +244,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-12 20:48:17" itemprop="dateModified" datetime="2019-11-12T20:48:17+08:00">2019-11-12</time>
+                <time title="修改时间：2019-11-14 19:35:47" itemprop="dateModified" datetime="2019-11-14T19:35:47+08:00">2019-11-14</time>
               </span>
 
           
@@ -279,7 +287,8 @@
 <h2 id="重新采样-resampling"><a href="#重新采样-resampling" class="headerlink" title="重新采样 resampling"></a>重新采样 resampling</h2><p>调用resample(),具体化一个新的频率<br><img src="/images/15735613556649.jpg" alt="-w969"><br>因为resample是一个延迟的异步操作，所以返回的是一个datetimeIndexResample对象，而不是一个series对象。可以简单的通过mean（）方法，求连续时间的均值，将其转化为series对象<br><img src="/images/15735616053886.jpg" alt="-w554"><br>注意一下，这里自动将两个小时之间的值求平均取得重新采样的结果，实际上，也可以采用其他方式来对原数据进行处理，比如最小值<br><img src="/images/15735618561417.jpg" alt="-w644"><br>可选择的，可以使用apply方法，来代替上述操作<br><img src="/images/15735619252562.jpg" alt="-w655"></p>
 <h3 id="向上采样和插值（Upsampling-and-interpolation）"><a href="#向上采样和插值（Upsampling-and-interpolation）" class="headerlink" title="向上采样和插值（Upsampling and interpolation）"></a>向上采样和插值（Upsampling and interpolation）</h3><p>一个向下采样的例子，展示前10条。arr.head(n=10)<br><img src="/images/15735620960973.jpg" alt="-w755"><br>通过插值来填补NaN。调用interpolate()函数，默认是使用线性插值，但也可以使用其他插值方式，比如立方插值。<br><img src="/images/15735622231132.jpg" alt="-w884"></p>
 <h3 id="时区（time-zones）"><a href="#时区（time-zones）" class="headerlink" title="时区（time zones）"></a>时区（time zones）</h3><p>通过调用tz_localize()，来使时间知道所在的时区。<br><img src="/images/15735624471844.jpg" alt="-w662"><br>后面添加了-4:00，表示相对于UTC时间少4小时<br>将时区设置到巴黎<br><img src="/images/15735625086767.jpg" alt="-w662"><br>注意此时，2:30出现两次，因为巴黎特殊的将冬天晚上调快一个小时 所以相对于UTC有+1:00也有加+2:00<br>当对这样的时间再次调用本地话函数时，会报错。可以使用ambiguous参数，来避免这样的错误<br><img src="/images/15735627611281.jpg" alt="-w777"></p>
-<h3 id="时间区间（periods）"><a href="#时间区间（periods）" class="headerlink" title="时间区间（periods）"></a>时间区间（periods）</h3><p>pd.period_range(),返回一个PeriodIndex，而不是DatetimeIndex<br><img src="/images/15735628881483.jpg" alt="-w720"></p>
+<h3 id="时间区间（periods）"><a href="#时间区间（periods）" class="headerlink" title="时间区间（periods）"></a>时间区间（periods）</h3><p>pd.period_range(),返回一个PeriodIndex，而不是DatetimeIndex<br><img src="/images/15735628881483.jpg" alt="-w720"><br>在periodIndex+N，则整个时间区间都上移N的单位<br><img src="/images/15737302603384.jpg" alt="-w757"><br>调用asfreq()，来更改频率。比如讲季度更改为月份<br><img src="/images/15737304197965.jpg" alt="-w794"><br>asfreq()函数默认显示结束显示，可以通过how参数使其展示开始时间<br><img src="/images/15737305387611.jpg" alt="-w796"><br><img src="/images/15737305940651.jpg" alt="-w1074"><br>同样的，我们可以给予periodIndex来创建series<br><img src="/images/15737306451436.jpg" alt="-w912"><br>通过to_timestamp来将时间区间转化为时间戳，默认显示区间的最后一天，可以通过参数how和freq来让时间戳表示时间区间的最后一个小时<br><img src="/images/15737307942072.jpg" alt="-w677"><br>通过to_period（）将时间戳还原成时间区间<br><img src="/images/15737312471894.jpg" alt="-w381"></p>
+<p>注意：一个获取2016年每个月的最后一个工作日的方法<br><img src="/images/15737313436912.jpg" alt="-w791"></p>
 
     </div>
 
@@ -296,6 +305,9 @@
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/07/pandas%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3~/" rel="next" title="pandas初步了解（Series）">
+                  <i class="fa fa-chevron-left"></i> pandas初步了解（Series）
+                </a>
             </div>
 
             <span class="post-nav-divider"></span>
@@ -358,7 +370,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
