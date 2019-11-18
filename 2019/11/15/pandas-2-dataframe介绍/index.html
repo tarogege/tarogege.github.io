@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Dear MaoMao" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="dataframe是类似于excel里的一个spreadsheet。里面包含列名，行标签，和单元值。是由多个series组成的二维表格。">
+<meta name="keywords" content="pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas(2)dataframe介绍">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;15&#x2F;pandas-2-dataframe%E4%BB%8B%E7%BB%8D&#x2F;index.html">
+<meta property="og:site_name" content="Dear MaoMao">
+<meta property="og:description" content="dataframe是类似于excel里的一个spreadsheet。里面包含列名，行标签，和单元值。是由多个series组成的二维表格。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738055633888.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738058640027.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738059417187.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738062971953.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738063873681.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738064811094.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738072110456.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738072377087.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738072804145.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738073762304.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738074223253.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738075727440.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738077870879.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738079570149.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738080187572.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738082589809.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738083447320.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738083756107.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738084104817.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738084389126.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738085097236.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738159958029.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738161349492.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738161959392.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738164104582.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738164980160.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738165388544.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738167968279.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738169593083.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740469286385.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740469576046.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740472643274.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740474598187.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740475091331.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740475692752.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740476374250.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740476921429.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740479199998.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740479498624.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740480031404.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740480464109.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740481458423.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740482015754.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740483176116.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740483633979.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740485813687.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740581907844.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740583796217.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740588159422.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740589474233.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740590522540.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740591633386.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740593790761.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740651712718.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740652929691.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740653362957.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740657214698.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740657544206.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740657907115.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740659397072.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740660120967.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740662261444.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740663299555.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740663652908.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740666502590.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740666829301.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740667312521.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740667848186.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740668929205.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740671314956.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740671625505.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740672517595.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740677986330.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740678590958.jpg">
+<meta property="og:updated_time" content="2019-11-18T09:04:20.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738055633888.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2019/11/15/pandas-2-dataframe%E4%BB%8B%E7%BB%8D/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>pandas(2)dataframe介绍 | Dear MaoMao</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dear MaoMao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">fight to graduate</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/15/pandas-2-dataframe%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="MaoMao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dear MaoMao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pandas(2)dataframe介绍
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-15 16:07:39" itemprop="dateCreated datePublished" datetime="2019-11-15T16:07:39+08:00">2019-11-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-18 17:04:20" itemprop="dateModified" datetime="2019-11-18T17:04:20+08:00">2019-11-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>dataframe是类似于excel里的一个spreadsheet。里面包含列名，行标签，和单元值。是由多个series组成的二维表格。</p>
+<a id="more"></a>
+<p>#data frame</p>
+<h2 id="创建一个dataFrame对象"><a href="#创建一个dataFrame对象" class="headerlink" title="创建一个dataFrame对象"></a>创建一个dataFrame对象</h2><p>可以通过创建 series字典来创建dataframe对象<br><img src="/images/15738055633888.jpg" alt="-w941"><br>notes:</p>
+<ul>
+<li>每一个series 通过index对齐</li>
+<li>对齐后index缺省的数据通过NaN来表示</li>
+<li>dataframe忽略series中的name</li>
+<li>dataframe在jupyter notebook中展示良好</li>
+</ul>
+<p>可以通过列名获取列，返回的是某一列的series<br><img src="/images/15738058640027.jpg" alt="-w669"><br>同时，可以通过数组获取多列<br><img src="/images/15738059417187.jpg" alt="-w477"><br>通过pd.DataFrame()构造函数来构造。如果将列名数组和行标签索引传递给构造函数，那么将按照指定顺序展示，且不会展示多余行。<br><img src="/images/15738062971953.jpg" alt="-w639"><br>另一种方法是，将ndarray传递给dataframe构造函数<br><img src="/images/15738063873681.jpg" alt="-w813"><br>可以通过 np.nan或者np masked array来表示nan<br><img src="/images/15738064811094.jpg" alt="-w736"></p>
+<p>总结：</p>
+<ul>
+<li>通过构造series字典</li>
+<li>通过pd.DataFrame(),传递 series字典、ndarray、dataframe、<h2 id="多索引-multi-index"><a href="#多索引-multi-index" class="headerlink" title="多索引 multi index"></a>多索引 multi index</h2>如果所有列 都是由相同大小的元组组成，那么他们可以被称为多索引。行标签也是一样<br><img src="/images/15738072110456.jpg" alt="-w868"><br>获取public列<br><img src="/images/15738072377087.jpg" alt="-w405"></li>
+</ul>
+<p>多层选取某列<br><img src="/images/15738072804145.jpg" alt="-w715"><br>注意与上面选取多个列的表达方式不一样</p>
+<h3 id="降级"><a href="#降级" class="headerlink" title="降级"></a>降级</h3><p>当有多级行，多级列的时候，可以通用droplevel()，对表格进行降级<br><img src="/images/15738073762304.jpg" alt="-w576"></p>
+<h3 id="转置-Transposing"><a href="#转置-Transposing" class="headerlink" title="转置 Transposing"></a>转置 Transposing</h3><p>可以通过T属性，转置行列<br><img src="/images/15738074223253.jpg" alt="-w405"></p>
+<h3 id="拼接和拆分级"><a href="#拼接和拆分级" class="headerlink" title="拼接和拆分级"></a>拼接和拆分级</h3><p>调用stack（）函数，会将最低级的列push进行当中。<br><img src="/images/15738075727440.jpg" alt="-w508"><br>注意最后生成的结果，删除了许多原有的nan，已经新添了许多新的nan。这样做是有意义的，因为，许多新的组合之前并不存在。<br>调用unstack()，会执行相反的操作，同样也会创建许多新的nan。<br><img src="/images/15738077870879.jpg" alt="-w514"><br>如果此时我们再次调用unstack（），最后会生成一个series<br><img src="/images/15738079570149.jpg" alt="-w607"><br>stack（）/和unstack()函数允许选择拼接dataframe的级，甚至可以一次操作多级。<br><img src="/images/15738080187572.jpg" alt="-w560"></p>
+<h2 id="大多数方法返回修改后的副本"><a href="#大多数方法返回修改后的副本" class="headerlink" title="大多数方法返回修改后的副本"></a>大多数方法返回修改后的副本</h2><p>比如stack()和unstack(),并不会修改原数据集，而是在副本上进行修改，并返回修改后的副本。大多数pandas中的方法都是如此。</p>
+<h3 id="获取行"><a href="#获取行" class="headerlink" title="获取行"></a>获取行</h3><p>重新看 people dataframe<br><img src="/images/15738082589809.jpg" alt="-w469"><br>调用loc（)方法，返回某行数据而不是某一列。返回一个新的series，列名作为该serires的index存在<br><img src="/images/15738083447320.jpg" alt="-w500"><br>可以通过iloc（）方法通过下标访问<br>、<img src="/images/15738083756107.jpg" alt="-w432"><br>同理，还可以获得某行的切片<br><img src="/images/15738084104817.jpg" alt="-w442"><br>可以通过布尔值来选取行<br><img src="/images/15738084389126.jpg" alt="-w431"><br>使用布尔值，最有用的选取方式<br><img src="/images/15738085097236.jpg" alt="-w443"></p>
+<h3 id="增加删除列"><a href="#增加删除列" class="headerlink" title="增加删除列"></a>增加删除列</h3><p>dataframe是series字典。可以通过已有列来生成新列。<br>通过字典删除操作 arr.pop/del arr.art来删除列<br><img src="/images/15738159958029.jpg" alt="-w806"><br>增加列的时候，行数必须相同，缺少的行用nan代替，多余的行会进行忽略<br><img src="/images/15738161349492.jpg" alt="-w1031"><br>当增加列的时候，默认添加在字典末尾。可以调用insert(),在字典任意地方添加列<br><img src="/images/15738161959392.jpg" alt="-w569"></p>
+<h3 id="新列对齐"><a href="#新列对齐" class="headerlink" title="新列对齐"></a>新列对齐</h3><p>通过调用assign()函数增加一个新列，会返回一个新的dataframe，而不会修改原dataframe<br><img src="/images/15738164104582.jpg" alt="-w706"><br>注意：不能调用同一次对齐中，新增的其他列<br><img src="/images/15738164980160.jpg" alt="-w771"><br>可以将一次对齐拆分称两次进行<br><img src="/images/15738165388544.jpg" alt="-w906"><br>或者 通过调用lamda 来解决。<br>But fear not, there is a simple solution. You can pass a function to the assign() method (typically a lambda function), and this function will be called with the DataFrame as a parameter:<br><img src="/images/15738167968279.jpg" alt="-w831"></p>
+<h2 id="评估一个表达式"><a href="#评估一个表达式" class="headerlink" title="评估一个表达式"></a>评估一个表达式</h2><p>pands可以评估表达式。需要安装依赖numexpr库<br>调用eval(）函数<br><img src="/images/15738169593083.jpg" alt="-w580"><br>也支持对齐表达式。通过使用参数inplace=True，来直接修改数据帧，而不是返回一个副本<br><img src="/images/15740469286385.jpg" alt="-w804"><br>通过前缀@，使用本地或者全局变量<br><img src="/images/15740469576046.jpg" alt="-w793"></p>
+<h2 id="查询一个dataframe"><a href="#查询一个dataframe" class="headerlink" title="查询一个dataframe"></a>查询一个dataframe</h2><p>通过抵用query（）来过滤dataframe中符合条件的项<br><img src="/images/15740472643274.jpg" alt="-w711"></p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>调用sort_index(),默认情况按照行的下标升序排序。通过修改asdending参数来修改排序方式。逆序:<br><img src="/images/15740474598187.jpg" alt="-w679"><br>排序返回的是目标dataframe的副本，通过inplace参数，使其直接修改目标dataframe<br><img src="/images/15740475091331.jpg" alt="-w677"><br>需要通过列的值来排序，而不是行下标，可以调用sort_values()方法。<br><img src="/images/15740475692752.jpg" alt="-w658"></p>
+<h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><p><img src="/images/15740476374250.jpg" alt="-w759"><br>You can pass extra arguments supported by matplotlib’s functions. For example, we can create scatterplot and pass it a list of sizes using the s argument of matplotlib’s scatter() function:<br><img src="/images/15740476921429.jpg" alt="-w743"></p>
+<h2 id="dataframe中的操作"><a href="#dataframe中的操作" class="headerlink" title="dataframe中的操作"></a>dataframe中的操作</h2><p>虽然dataframe 并不准备模仿ndarray，但是他们仍然有许多相似的地方。<br>构造dataframe<br><img src="/images/15740479199998.jpg" alt="-w1015"><br>可以在dataframe中使用numpy的方法<br><img src="/images/15740479498624.jpg" alt="-w416"><br>相似的，在dataframe中+N，会在每个元素上+N，会进行广播<br><img src="/images/15740480031404.jpg" alt="-w327"><br>同理，布尔值判断也是一样<br><img src="/images/15740480464109.jpg" alt="-w321"><br>聚合操作，例如max，mean，sum，应用在每一个列，并返回一个series<br><img src="/images/15740481458423.jpg" alt="-w252"><br>all（）操作也是一个聚合操作，检查所有值 是否为true<br><img src="/images/15740482015754.jpg" alt="-w330"><br>上述的大部分方法，都有可选参数axies，默认axies=0，从列来进行操作。将axies=1，则会从行来进行操作<br><img src="/images/15740483176116.jpg" alt="-w451"><br>any（）操作会检查，只要有一个值为true<br><img src="/images/15740483633979.jpg" alt="-w423"><br>如果尝试将series添加到一个dataframe上（或者其他二元操作），那么pandas将尝试在所有行是执行该操作。前提是serires的长度必须与dataframe每行的长度一致。<br><img src="/images/15740485813687.jpg" alt="-w738"></p>
+<h2 id="自动对齐"><a href="#自动对齐" class="headerlink" title="自动对齐"></a>自动对齐</h2><p>跟serires一样，dataFrame会根据行标签和列名同时进行对齐。<br><img src="/images/15740581907844.jpg" alt="-w1082"></p>
+<h2 id="处理丢失数据"><a href="#处理丢失数据" class="headerlink" title="处理丢失数据"></a>处理丢失数据</h2><p>在面对真实数据时，处理丢失数据是一个非常频繁的操作。有几种处理方法。<br>调用fillna（）<br><img src="/images/15740583796217.jpg" alt="-w424"><br>或许将所有缺失数据改为0，并不合适。下面将grades的缺失数据保留，将bonus_points中的缺失数据改为0<br><img src="/images/15740588159422.jpg" alt="-w580"><br>注意其中，调用fillna（）对bonus_points进行修改，然后为了处理起 + 操作，由于自动对齐导致的NaN，增加了对应行和列<br>虽然伪造了一些值，但显得比较合适。<br>第二个方式是调用插值interpolate（），默认axies=0，表示按列插值。当axis=1时，按行插值。<br><img src="/images/15740589474233.jpg" alt="-w507"><br><img src="/images/15740590522540.jpg" alt="-w424"><br>如图可以看出，colin由于没有9月数据，所以无法根据9月和11月的均值来估计10月的数据。因此，在调用interpolate()后还是会有缺失值。解决方法如下：<br><img src="/images/15740591633386.jpg" alt="-w652"><br><img src="/images/15740593790761.jpg" alt="-w451"><br>从上图可以看出，9月没有按照顺序，而是排在了最后。这是因为grades并没有dec这一列，所以为了让事情可预测，pandas让列按字母序排列。为了修正这个排列，在grades 数据帧做加法前加上dec这一列<br><img src="/images/15740651712718.jpg" alt="-w556"><br>针对dec列和colin行，我们无法对其进行一些更多的操作。通过dropna（），来删除所有元素的NaN的行<br><img src="/images/15740652929691.jpg" alt="-w584"><br>通过设置axis参数=1，来删除所有元素都是NaN的列<br><img src="/images/15740653362957.jpg" alt="-w708"></p>
+<h2 id="聚合与分组"><a href="#聚合与分组" class="headerlink" title="聚合与分组"></a>聚合与分组</h2><p>同SQL语句相似，pandas允许将数据进行分组，来对每组数据执行计算。<br>首先，final_grades上增加一些额外列，来方便执行分组<br><img src="/images/15740657214698.jpg" alt="-w782"><br>然后，按照hobby来对dataframe进行分组<br><img src="/images/15740657544206.jpg" alt="-w660"><br>最后再执行计算<br><img src="/images/15740657907115.jpg" alt="-w440"></p>
+<h2 id="数据透视表"><a href="#数据透视表" class="headerlink" title="数据透视表"></a>数据透视表</h2><p>pandas支持数据透视表来进行快速的数据求和操作。<br>首先，新建一个dataframe<br><img src="/images/15740659397072.jpg" alt="-w798"><br>然后，调用pivot_table()，按照name进行分组。默认情况下，透视表计算每个数字列的均值<br><img src="/images/15740660120967.jpg" alt="-w526"><br>可以通过aggfunc参数来改变计算的方式<br><img src="/images/15740662261444.jpg" alt="-w894"><br>We can also specify the columns to aggregate over horizontally, and request the grand totals for each row and column by setting margins=True:<br><img src="/images/15740663299555.jpg" alt="-w879"><br>最后，可以执行多级索引<br><img src="/images/15740663652908.jpg" alt="-w665"></p>
+<h2 id="概览函数-overview-function"><a href="#概览函数-overview-function" class="headerlink" title="概览函数 overview function"></a>概览函数 overview function</h2><p>当处理大型dataframe时，经常先快速浏览一下数据的大致内容。pandans提供了几种可以快速流浪数据的方法。<br>首先创造一个大型dataframe<br><img src="/images/15740666502590.jpg" alt="-w1097"><br>head（）方法返回dataframe的top5<br><img src="/images/15740666829301.jpg" alt="-w978"><br>tail（）方法，返回bottom 5.通过参数n来控制数量<br><img src="/images/15740667312521.jpg" alt="-w1055"><br>info（）方法，打印每一列的总结<br><img src="/images/15740667848186.jpg" alt="-w440"><br>最后 describe（），方法提供一种很好的概览方式，列举了每一列的主要聚合方法的值。</p>
+<ul>
+<li>count 非空值数量</li>
+<li>mean 非空值均值</li>
+<li>std 非空值的标准分布</li>
+<li>min</li>
+<li>25%, 50%, 75%：25th, 50th and 75th percentile of non-null values</li>
+<li>max<br><img src="/images/15740668929205.jpg" alt="-w1089"></li>
+</ul>
+<h2 id="保存和加载"><a href="#保存和加载" class="headerlink" title="保存和加载"></a>保存和加载</h2><p>pandas允许通过多种后缀名来保存dataframe<br>首先，创建一个dataframe<br><img src="/images/15740671314956.jpg" alt="-w718"></p>
+<h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><p>保存成CSV，JSON，HTML<br><img src="/images/15740671625505.jpg" alt="-w412"><br>其他后缀名也是类似，但是一些格式的保存需要一些额外的库，比如excel，需要openpyxl library<br><img src="/images/15740672517595.jpg" alt="-w546"></p>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p><img src="/images/15740677986330.jpg" alt="-w609"><br>同样，也有read_json, read_html, read_excel。<br>可以直接从网上读取数据<br><img src="/images/15740678590958.jpg" alt="-w698"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/pandas/" rel="tag"># pandas</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/12/numpy-8-%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8A%A0%E8%BD%BD/" rel="next" title="numpy(8)保存和加载">
+                  <i class="fa fa-chevron-left"></i> numpy(8)保存和加载
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个dataFrame对象"><span class="nav-number">1.</span> <span class="nav-text">创建一个dataFrame对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多索引-multi-index"><span class="nav-number">2.</span> <span class="nav-text">多索引 multi index</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#降级"><span class="nav-number">2.1.</span> <span class="nav-text">降级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转置-Transposing"><span class="nav-number">2.2.</span> <span class="nav-text">转置 Transposing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拼接和拆分级"><span class="nav-number">2.3.</span> <span class="nav-text">拼接和拆分级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大多数方法返回修改后的副本"><span class="nav-number">3.</span> <span class="nav-text">大多数方法返回修改后的副本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取行"><span class="nav-number">3.1.</span> <span class="nav-text">获取行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加删除列"><span class="nav-number">3.2.</span> <span class="nav-text">增加删除列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新列对齐"><span class="nav-number">3.3.</span> <span class="nav-text">新列对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估一个表达式"><span class="nav-number">4.</span> <span class="nav-text">评估一个表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询一个dataframe"><span class="nav-number">5.</span> <span class="nav-text">查询一个dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">6.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画图"><span class="nav-number">7.</span> <span class="nav-text">画图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dataframe中的操作"><span class="nav-number">8.</span> <span class="nav-text">dataframe中的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动对齐"><span class="nav-number">9.</span> <span class="nav-text">自动对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理丢失数据"><span class="nav-number">10.</span> <span class="nav-text">处理丢失数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合与分组"><span class="nav-number">11.</span> <span class="nav-text">聚合与分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据透视表"><span class="nav-number">12.</span> <span class="nav-text">数据透视表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概览函数-overview-function"><span class="nav-number">13.</span> <span class="nav-text">概览函数 overview function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存和加载"><span class="nav-number">14.</span> <span class="nav-text">保存和加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存"><span class="nav-number">14.1.</span> <span class="nav-text">保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载"><span class="nav-number">14.2.</span> <span class="nav-text">加载</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="MaoMao"
+    src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">MaoMao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MaoMao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
