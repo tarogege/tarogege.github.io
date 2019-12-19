@@ -133,7 +133,11 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740672517595.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740677986330.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740678590958.jpg">
-<meta property="og:updated_time" content="2019-11-18T09:04:20.873Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740769050741.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740770057822.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740770812435.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15740771491642.jpg">
+<meta property="og:updated_time" content="2019-11-18T11:39:12.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;15738055633888.jpg">
 
@@ -281,7 +285,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-18 17:04:20" itemprop="dateModified" datetime="2019-11-18T17:04:20+08:00">2019-11-18</time>
+                <time title="修改时间：2019-11-18 19:39:12" itemprop="dateModified" datetime="2019-11-18T19:39:12+08:00">2019-11-18</time>
               </span>
 
           
@@ -340,6 +344,7 @@
 <h2 id="保存和加载"><a href="#保存和加载" class="headerlink" title="保存和加载"></a>保存和加载</h2><p>pandas允许通过多种后缀名来保存dataframe<br>首先，创建一个dataframe<br><img src="/images/15740671314956.jpg" alt="-w718"></p>
 <h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><p>保存成CSV，JSON，HTML<br><img src="/images/15740671625505.jpg" alt="-w412"><br>其他后缀名也是类似，但是一些格式的保存需要一些额外的库，比如excel，需要openpyxl library<br><img src="/images/15740672517595.jpg" alt="-w546"></p>
 <h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p><img src="/images/15740677986330.jpg" alt="-w609"><br>同样，也有read_json, read_html, read_excel。<br>可以直接从网上读取数据<br><img src="/images/15740678590958.jpg" alt="-w698"></p>
+<h2 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h2><p>拥有表示种类的数据值是十分常见的情况。比如A表示优秀，B表示良好。1表示男性，2表示女性。对其进行处理<br>例子，首先增加一个用于分类的列<br><img src="/images/15740769050741.jpg" alt="-w487"><br>但是eco_code难以阅读和理解。可以给予eco_code创建一个新的列<br><img src="/images/15740770057822.jpg" alt="-w749"><br>然后，给每个种类一个有意义的名字<br><img src="/images/15740770812435.jpg" alt="-w743"><br>注意：种类值是根据数字大小排序，而不是字母序。<br><img src="/images/15740771491642.jpg" alt="-w540"></p>
 
     </div>
 
@@ -364,6 +369,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/04/%E5%A6%82%E4%BD%95%E5%88%B6%E5%AE%9A%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C%E8%AE%A1%E5%88%92/" rel="prev" title="如何制定论文写作计划">
+                  如何制定论文写作计划 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -402,7 +410,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个dataFrame对象"><span class="nav-number">1.</span> <span class="nav-text">创建一个dataFrame对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多索引-multi-index"><span class="nav-number">2.</span> <span class="nav-text">多索引 multi index</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#降级"><span class="nav-number">2.1.</span> <span class="nav-text">降级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转置-Transposing"><span class="nav-number">2.2.</span> <span class="nav-text">转置 Transposing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拼接和拆分级"><span class="nav-number">2.3.</span> <span class="nav-text">拼接和拆分级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大多数方法返回修改后的副本"><span class="nav-number">3.</span> <span class="nav-text">大多数方法返回修改后的副本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取行"><span class="nav-number">3.1.</span> <span class="nav-text">获取行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加删除列"><span class="nav-number">3.2.</span> <span class="nav-text">增加删除列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新列对齐"><span class="nav-number">3.3.</span> <span class="nav-text">新列对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估一个表达式"><span class="nav-number">4.</span> <span class="nav-text">评估一个表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询一个dataframe"><span class="nav-number">5.</span> <span class="nav-text">查询一个dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">6.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画图"><span class="nav-number">7.</span> <span class="nav-text">画图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dataframe中的操作"><span class="nav-number">8.</span> <span class="nav-text">dataframe中的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动对齐"><span class="nav-number">9.</span> <span class="nav-text">自动对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理丢失数据"><span class="nav-number">10.</span> <span class="nav-text">处理丢失数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合与分组"><span class="nav-number">11.</span> <span class="nav-text">聚合与分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据透视表"><span class="nav-number">12.</span> <span class="nav-text">数据透视表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概览函数-overview-function"><span class="nav-number">13.</span> <span class="nav-text">概览函数 overview function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存和加载"><span class="nav-number">14.</span> <span class="nav-text">保存和加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存"><span class="nav-number">14.1.</span> <span class="nav-text">保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载"><span class="nav-number">14.2.</span> <span class="nav-text">加载</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个dataFrame对象"><span class="nav-number">1.</span> <span class="nav-text">创建一个dataFrame对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多索引-multi-index"><span class="nav-number">2.</span> <span class="nav-text">多索引 multi index</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#降级"><span class="nav-number">2.1.</span> <span class="nav-text">降级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转置-Transposing"><span class="nav-number">2.2.</span> <span class="nav-text">转置 Transposing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拼接和拆分级"><span class="nav-number">2.3.</span> <span class="nav-text">拼接和拆分级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大多数方法返回修改后的副本"><span class="nav-number">3.</span> <span class="nav-text">大多数方法返回修改后的副本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取行"><span class="nav-number">3.1.</span> <span class="nav-text">获取行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加删除列"><span class="nav-number">3.2.</span> <span class="nav-text">增加删除列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新列对齐"><span class="nav-number">3.3.</span> <span class="nav-text">新列对齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估一个表达式"><span class="nav-number">4.</span> <span class="nav-text">评估一个表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询一个dataframe"><span class="nav-number">5.</span> <span class="nav-text">查询一个dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">6.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#画图"><span class="nav-number">7.</span> <span class="nav-text">画图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dataframe中的操作"><span class="nav-number">8.</span> <span class="nav-text">dataframe中的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动对齐"><span class="nav-number">9.</span> <span class="nav-text">自动对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理丢失数据"><span class="nav-number">10.</span> <span class="nav-text">处理丢失数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合与分组"><span class="nav-number">11.</span> <span class="nav-text">聚合与分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据透视表"><span class="nav-number">12.</span> <span class="nav-text">数据透视表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概览函数-overview-function"><span class="nav-number">13.</span> <span class="nav-text">概览函数 overview function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存和加载"><span class="nav-number">14.</span> <span class="nav-text">保存和加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存"><span class="nav-number">14.1.</span> <span class="nav-text">保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载"><span class="nav-number">14.2.</span> <span class="nav-text">加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#种类"><span class="nav-number">15.</span> <span class="nav-text">种类</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -418,12 +426,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
